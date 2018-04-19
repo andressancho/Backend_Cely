@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_noticia: 1
+  texto: MyText
+  posicion: 1
+  autthentication_token: 1
+  userId: 1
+
+two:
+  id_noticia: 1
+  texto: MyText
+  posicion: 1
+  autthentication_token: 1
+  userId: 1

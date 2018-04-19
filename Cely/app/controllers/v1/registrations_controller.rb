@@ -6,9 +6,9 @@ class V1::RegistrationsController < ApplicationController
 
       user = User.new(name: params[:name], email: params[:email],password: params[:password])
       if user.save
-        render json: {status: 'Success',message: 'New user', data:user},status: :created
+        render json: {status: 'Success',message: 'Nuevo usuario', data:user},status: :created
       else
-      render json: {status: "Error", message:user.errors}
+        render json: {status: "Error", message: user.errors}
       end
     end
 

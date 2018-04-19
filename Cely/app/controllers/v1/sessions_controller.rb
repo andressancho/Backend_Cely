@@ -1,12 +1,16 @@
 class V1::SessionsController < ApplicationController
    protect_from_forgery with: :null_session
+   skip_before_action :verify_authenticity_token
   def create
     user= User.where(email: params[:email]).first
-
-    if user.valid_password?(params[:password])
-      render json: {status: 'Success',message: 'Logged in', data:user},status: :created
+    if user
+      if user.valid_password?(params[:password])
+        render json: {status: 'Success',message: 'Logged in', data:user},status: :created
+      else
+        render json: {status: "Error", message: "Contraseña incorrecta"}
+      end
     else
-      render json: {status: "Error", message: "Contraseña incorrecta"}
+      render json: {status: "Error", message:"Usuario inexistente"}
     end
 
   end
@@ -25,9 +29,9 @@ class V1::SessionsController < ApplicationController
       end
 
     end
-
-
   end
+
+  
 
 
 end
