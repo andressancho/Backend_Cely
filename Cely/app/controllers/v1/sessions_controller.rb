@@ -5,6 +5,8 @@ class V1::SessionsController < ApplicationController
     user= User.where(email: params[:email]).first
     if user
       if user.valid_password?(params[:password])
+        user.authentication_token=nil
+        user.save
         render json: {status: 'Success',message: 'Logged in', data:user},status: :created
       else
         render json: {status: "Error", message: "Contraseña incorrecta"}
@@ -31,7 +33,7 @@ class V1::SessionsController < ApplicationController
     end
   end
 
-  
+
 
 
 end

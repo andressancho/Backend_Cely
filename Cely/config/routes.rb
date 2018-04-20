@@ -7,9 +7,10 @@ Rails.application.routes.draw do
 
   	resources :sessions, only: [:create, :destroy]
     resources :registrations, only: [:create]
-    resources :noticias, only: [:create]
+    resources :noticias, only: [:create, :index]
     post 'sessions/fb', to: 'sessions#fb'
     post 'noticias/add', to: 'noticias#add'
+    get 'noticias/getLines', to: 'noticias#getLines'
 
 
 
